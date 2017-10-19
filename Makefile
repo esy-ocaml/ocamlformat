@@ -11,14 +11,14 @@
 
 SHELL=bash
 
-JBFLAGS= -j $(shell opam config var jobs)
+JBFLAGS= -j 4
 OCAMLDOT=ocamldot
 
 .PHONY: default
 default: exe
 
-src/jbuild-workspace: src/jbuild-workspace.in
-	sed -e "s|@OPAM_SWITCH[@]|$$(opam switch show)|g" $< > $@
+src/jbuild-workspace:
+	echo '(context default)' > $(@)
 
 # patch changes from https://github.com/ocaml/ocaml/pull/1229
 

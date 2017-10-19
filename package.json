@@ -1,0 +1,65 @@
+{
+  "name": "ocamlformat",
+  "version": "0.1.0",
+  "dependencies": {
+    "substs": "esy-ocaml/substs",
+    "opam-installer-bin": "esy-ocaml/opam-installer-bin",
+    "@opam-alpha/base": "*",
+    "@opam-alpha/base-unix": "*",
+    "@opam-alpha/cmdliner": "*",
+    "@opam-alpha/jbuilder": "",
+    "@opam-alpha/ocaml-migrate-parsetree": " >= 1.0.5",
+    "@opam-alpha/stdio": "*"
+  },
+  "peerDependencies": {
+    "ocaml": ">=4.2.3"
+  },
+  "resolutions": {
+    "**/@opam-alpha/ocamlbuild": "esy-ocaml/ocamlbuild#0.11.0-esy"
+  },
+  "esy": {
+    "release": {
+      "releasedBinaries": [
+        "ocamlformat"
+      ]
+    },
+    "build": [
+      [
+        "jbuilder",
+        "subst"
+      ],
+      [
+        "make"
+      ],
+      [
+        "cp",
+        "src/_build/default/ocamlformat.exe",
+        "$cur__bin/ocamlformat"
+      ],
+      [
+        "sh",
+        "-c",
+        "(opam-installer --prefix=$cur__install || true)"
+      ]
+    ],
+    "exportedEnv": {
+      "ocamlformat_version": {
+        "val": "0.1.0",
+        "scope": "global"
+      },
+      "ocamlformat_installed": {
+        "val": "true",
+        "scope": "global"
+      },
+      "ocamlformat_enable": {
+        "val": "enable",
+        "scope": "global"
+      }
+    },
+    "buildsInSource": true
+  },
+  "devDependencies": {
+    "ocaml": "esy-ocaml/ocaml#4.4.2+esy",
+    "esy": "0.0.13"
+  }
+}

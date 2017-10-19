@@ -9,3 +9,7 @@ src/format/format_.mli
 src/jbuild-workspace
 src/mod_dep.dot
 test/code
+_release
+_install
+_build
+node_modules
